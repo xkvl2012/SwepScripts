@@ -1,0 +1,65 @@
+--shockwave racing
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Swep Scripts | Shockwave Racing 🏁", HidePremium = false, SaveConfig = true, ConfigFolder = "SwepShock", IntroText = "Swep Scripts"})
+
+local Tab = Window:MakeTab({
+	Name = "auto farm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local pl = game.Players.LocalPlayer
+_G.autoWin = true
+function autoWin()
+	while _G.autoWin == true do
+		pl.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Finish.Details.Floor.CFrame
+		wait(3)
+	end
+end
+
+function Teleport()
+	pl.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Finish.Details.Floor.CFrame
+end
+function Spawn()
+	pl.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Spawn.Spawn.CFrame
+end
+
+function Finish()
+	pl.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Finish.Details.Floor.CFrame
+end
+
+local Section = Tab:AddSection({
+	Name = "Auto Farm Wins | winning streak only"
+})
+Tab:AddToggle({
+	Name = "Start",
+	Default = false,
+	Callback = function(Value)
+		_G.autoWin = Value
+		autoWin()
+		print(Value)
+	end    
+})
+local Section = Tab:AddSection({
+	Name = "Teleport to Finish | Boomerang only"
+})
+Tab:AddButton({
+	Name = "Teleport!",
+	Callback = function()
+		Teleport()
+		wait(0.5)
+		Spawn()
+      		print("button pressed")
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Farm Wins | Fastest Runner only"
+})
+Tab:AddButton({
+	Name = "Teleport!",
+	Callback = function()
+		Finish()
+      		print("button pressed")
+  	end    
+})
